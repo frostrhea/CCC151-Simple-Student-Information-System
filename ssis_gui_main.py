@@ -20,7 +20,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.gui_ssis.addCourseButton.clicked.connect(self.add_course_button_clicked)
         self.setComboBoxModel() 
         self.gui_ssis.addStudentButton.clicked.connect(self.add_student_button_clicked)
-
+        self.gui_ssis.searchCourseButton.clicked.connect(self.search_course_button_clicked)
+        self.gui_ssis.searchStudentButton.clicked.connect(self.search_student_button_clicked)
+        
     def setSModel(self, pdCSV, model):
         for row in range(len(pdCSV)):
             for column in range(len(pdCSV.columns)):
@@ -45,6 +47,11 @@ class MainWindow(QtWidgets.QMainWindow):
                 header.resizeSection(i, 240)
             elif table == self.gui_ssis.CourseTable:
                 header.resizeSection(i, 360)
+
+    def clearModel(self, model, rows=0, cols=0):
+        model.clear()
+        model.setRowCount(rows)
+        model.setColumnCount(cols)
 
     def setStandardItemModel(self):
         self.studentModel = QtGui.QStandardItemModel()
@@ -87,6 +94,35 @@ class MainWindow(QtWidgets.QMainWindow):
     def setComboBoxModel(self):
         self.gui_ssis.chooseCourse.clear() 
         self.gui_ssis.chooseCourse.addItems(csvObject.course_list) 
+        
+    def search_course_button_clicked(self): 
+        search_coursetxt = self.gui_ssis.searchInputCourse.text()
+        CResults_df = self.courseObject.searchCourse(search_coursetxt)
+        print("Results:", CResults_df) 
+        if not CResults_df.empty:
+            self.clearModel(self.courseModel)
+            self.courseModel = self.setSModel(CResults_df, self.courseModel)
+            self.courseModel.setHorizontalHeaderLabels(self.courseObject.columns)
+            self.gui_ssis.CourseTable.setModel(self.courseModel)
+            self.adjustTableColumns(self.gui_ssis.CourseTable)
+            self.gui_ssis.CourseTable.model().layoutChanged.emit()
+        else:
+            QtWidgets.QMessageBox.information(self, "No Results", f"No results found for course '{search_coursetxt}'.")
+            
+    def search_student_button_clicked(self): 
+        search_studenttxt = self.gui_ssis.searchInputStudent.text()
+        SResults_df = self.studentObject.searchStudent(search_studenttxt)
+        print("Results:", SResults_df) 
+        if not SResults_df.empty:
+            self.clearModel(self.studentModel)
+            self.studentModel = self.setSModel(SResults_df, self.studentModel)
+            self.studentModel.setHorizontalHeaderLabels(self.studentObject.columns)
+            self.gui_ssis.StudentTable.setModel(self.studentModel)
+            self.adjustTableColumns(self.gui_ssis.StudentTable)
+            self.gui_ssis.StudentTable.model().layoutChanged.emit()
+        else:
+            QtWidgets.QMessageBox.information(self, "No Results", f"No results found for course '{search_studenttxt}'.")
+
     
     
     

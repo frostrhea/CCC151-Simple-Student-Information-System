@@ -66,15 +66,20 @@ class Course:
     # Checks the indexes then invoke displayCourse method if found
 
     def searchCourse(self, course):
-        value = str(course)
-        found = False
+        value = str(course).lower()
+        CResults_df = pd.DataFrame(columns=self.courses_df.columns)
         for index in range(len(self.courses_df)):
-            if self.courses_df.loc[index, 'courseName'] == value or self.courses_df.loc[index, 'courseCode'] == value:
-                found = True
-                print("Search Results: ")
-                self.displayCourse(index)
-        if not found:
-            print(f"Course '{course}' not found.\n")
+            course_name = self.courses_df.loc[index, 'courseName'].lower()
+            course_code = self.courses_df.loc[index, 'courseCode'].lower()
+            if value in course_name or value in course_code:
+                CResults_df = CResults_df.append(self.courses_df.loc[index])
+        if len(CResults_df) == 0:
+            print("No matching courses found.")
+        else:
+            print(CResults_df)
+        return CResults_df
+
+
 
     # function to update the course name field
     # Checks the indexes, then if found, check the new name if it exists already in csv
@@ -166,15 +171,19 @@ class StudentInfo:
     # function to search student by name or id
 
     def searchStudent(self, value):
-        value = str(value)
-        found = False
+        value = str(value).lower()
+        SResults_df = pd.DataFrame(columns=self.student_df.columns)
         for index in range(len(self.student_df)):
-            if self.student_df.loc[index, 'id'] == value or self.student_df.loc[index, 'name'] == value:
-                found = True
-                print("Search Results: ")
-                self.displayStudent(index)
-        if not found:
-            print(f"Student '{value}' not found.\n")
+            student_name = self.student_df.loc[index, 'name'].lower()
+            student_id = self.student_df.loc[index, 'id'].lower()
+            student_course = self.student_df.loc[index, 'course'].lower()
+            if value in student_name or value in student_id or value in student_course:
+                SResults_df = SResults_df.append(self.student_df.loc[index])
+        if len(SResults_df) == 0:
+            print("No matching courses found.")
+        else:
+            print(SResults_df)
+        return SResults_df
 
   # function to edit/update student information
 

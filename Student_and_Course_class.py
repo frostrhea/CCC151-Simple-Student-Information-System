@@ -3,14 +3,14 @@ import pandas as pd
 
 # global array for class Student to refer for existing courses
 course_list = pd.read_csv("courses.csv")['courseCode'].tolist()
-
+course_names = pd.read_csv("courses.csv")['courseName'].tolist()
 
 class Course:
     def __init__(self):
         self.columns = ['courseCode', 'courseName']
         self.courses_df = pd.read_csv(
             "courses.csv", header=0, names=self.columns)
-        self.course_list = course_list
+
 
     # function to add a course to the list
     # Checks if input is in the list, then adds it to the list by appending it to csv
@@ -19,7 +19,7 @@ class Course:
         return self.courses_df
 
     def addCourse(self, value, code):
-        if code in self.course_list or value in self.course_list:
+        if code in course_list or value in course_list:
             print(f"Course {value} already exists.")
             return
         else:
@@ -27,16 +27,16 @@ class Course:
             self.courses_df = self.courses_df.append(
                 new_course, ignore_index=True)
             self.courses_df.to_csv('courses.csv', index=False, header=True)
-            self.course_list.append(value)
+            course_names.append(value)
             print(f"Course '{value}' added.\n")
-    #
+
+    #           
     # function to delete a course from the list
     # Looks for the possible index of the input, then drop it from the list if it exists
     #   then update the csv.
 
     def deleteCourse(self, code):
-        index = self.courses_df.index[self.courses_df['courseCode'] == code].tolist(
-        )
+        index = self.courses_df.index[self.courses_df['courseCode'] == code].tolist()
         if not index:
             print(f"Course code '{code}' does not exist.\n")
         else:
@@ -85,24 +85,32 @@ class Course:
     # Checks the indexes, then if found, check the new name if it exists already in csv
     #    if not, updates the name field and saves the new name in csv.
 
-    def updateCourse(self, value, newCourseName):
-        found = False
-        for index in range(len(self.courses_df)):
-            if self.courses_df.loc[index, 'courseName'] == value or self.courses_df.loc[index, 'courseCode'] == value:
-                found = True
-                if str(newCourseName) in str(self.courses_df['courseName'].values):
-                    print("Course name already exists.")
-
-                else:
-                    self.courses_df.at[index, 'courseName'] = newCourseName
-                    # self.courses_df.at[index, 'courseCode'] = newCourseCode
-                    self.courses_df.to_csv('courses.csv', index=False)
-                    print(
-                        f"Course '{value}' name updated successfully. \n")
-        if not found:
-            print(f"Course '{value}' not found.")
+    def updateCourse(self, value, row, columnIndex, newValue):
+        if columnIndex == 0:  # Course code column
+            self.courses_df.at[row, 'courseCode'] = newValue
+        elif columnIndex == 1:  # Course name column
+            self.courses_df.at[row, 'courseName'] = newValue
+        self.courses_df.to_csv('courses.csv', index=False)
+        print(f"Course '{value}' updated successfully.")
 
 
+    def courseCodeExists(self, courseCode):
+        #course_df = self.returnCourseCSV()
+        if courseCode in self.courses_df['courseCode'].values:
+            return True
+        #return courseCode in course_df['courseCode'].values
+    
+    def courseCodeNotinList(self, course):
+        #course_list = self.returnCourseCSV()
+        if course not in self.courses_df['courseCode'].values:
+            return True
+        
+    # Retrieve the course code based on the course name    
+    def getCourseCode(self, course_name):
+        row = self.courses_df.loc[self.courses_df['courseName'] == course_name]
+        course_code = row['courseCode'].values[0]
+        return course_code
+    
 # -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 
@@ -111,31 +119,24 @@ class StudentInfo:
         self.columns = ['name', 'id', 'course']
         self.student_df = pd.read_csv(
             "student_info.csv", header=0, names=self.columns)
-        self.course_list = course_list
+
+        
 
     def returnStudentCSV(self):
         return self.student_df
 
     # function to add a student
     def addStudent(self, name, id, course):
-        if course not in self.course_list:
-            print("Invalid course.")
+        if str(id) in str(self.student_df['id'].values):
+            print(f"Student with ID '{id}' already exists.")
             return
         else:
-            if str(id) in str(self.student_df['id'].values):
-                print(f"Student with ID '{id}' already exists.")
-                return
-            # name = input("Enter student name: ")
-            # id= input("Enter ID number: ")
-            # course = input("Enter course: ")
-            # student = pd.DataFrame({'name': [name], 'course': [course], 'id': [id]})
-            else:
-                new_student = {'name': name, 'course': course, 'id': id}
-                self.student_df = self.student_df.append(
-                    new_student, ignore_index=True)
-                self.student_df.to_csv('student_info.csv', index=False,
-                                       header=True)
-                print(f"Student '{name}' has been added.\n")
+            new_student = {'name': name, 'id': id, 'course': course}
+            self.student_df = self.student_df.append(
+                new_student, ignore_index=True)
+            self.student_df.to_csv('student_info.csv', index=False,
+                                header=True)
+            print(f"Student '{name}' has been added.\n")
 
     # function to delete student
 
@@ -187,29 +188,39 @@ class StudentInfo:
 
   # function to edit/update student information
 
-    def updateStudent(self, value, newName, newCourse):
-        if newCourse not in self.course_list:
-            print("Invalid course.")
-            return
-        else:
-            found = False
-            for index in range(len(self.student_df)):
-                if self.student_df.loc[index, 'id'] == value or self.student_df.loc[index, 'name'] == value:
-                    found = True
-                    # if self.student_df['id'].isin([newID]).any():
-                    # if str(newID) in str(self.student_df['id'].values):
-                    #    print("Student ID already exists.")
-                    # else:
-                    self.student_df.at[index, 'name'] = newName
-                    # self.student_df.at[index, 'id'] = newID
-                    self.student_df.at[index, 'course'] = newCourse
-                    self.student_df.to_csv('student_info.csv', index=False)
-                    print(
-                        f"Student '{value}' information updated successfully.\n")
+    def updateStudent(self, value, row, columnIndex, newValue):
+        found = False
+        if columnIndex == 2:  # Student course column
+            if courseObject.courseCodeExists(newValue) == True:
+                found = True
+                self.student_df.at[row, 'course'] = newValue
+                self.student_df.to_csv('student_info.csv', index=False)
+                print(f"Student course '{value}' updated successfully.\n")
+            else:
+                print(f"Course code '{newValue}' not found.")
+                return
 
-                    #
-            if not found:
-                print(f"Student '{value}' not found.")
+        if columnIndex == 0:  # Student name column
+            self.student_df.at[row, 'name'] = newValue
+        elif columnIndex == 1:  # Student id column
+            self.student_df.at[row, 'id'] = newValue
+
+        self.student_df.to_csv('student_info.csv', index=False)
+        print(f"Student '{value}' information updated successfully.\n")
+
+        if not found:
+            print(f"Student '{value}' not found.")
+
+
+
+                
+    def studentIDExists(self, studentID):
+        student_df = self.returnStudentCSV()
+        if studentID in student_df['id'].values:
+            return True
+    
+
+
 
 #
 courseObject = Course()

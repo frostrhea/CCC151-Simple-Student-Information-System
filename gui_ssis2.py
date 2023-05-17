@@ -12,7 +12,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1134, 760)
@@ -20,17 +19,279 @@ class Ui_MainWindow(object):
         font.setPointSize(9)
         MainWindow.setFont(font)
         MainWindow.setStyleSheet("background-color: #f6fafd\n"
-                                 "")
+"")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(340, 40, 771, 681))
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.frame_5 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_5.setGeometry(QtCore.QRect(10, 70, 321, 521))
+        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.frame = QtWidgets.QFrame(self.frame_5)
+        self.frame.setGeometry(QtCore.QRect(10, 20, 311, 231))
+        self.frame.setStyleSheet("backgroun-color: white\n"
+"")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.frame)
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(0, 140, 301, 41))
+        self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_4.setSpacing(29)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.label_course = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(10)
+        self.label_course.setFont(font)
+        self.label_course.setStyleSheet("color: #006fbe")
+        self.label_course.setObjectName("label_course")
+        self.horizontalLayout_4.addWidget(self.label_course)
+        self.chooseCourse = QtWidgets.QComboBox(self.horizontalLayoutWidget_3)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.chooseCourse.setFont(font)
+        self.chooseCourse.setStyleSheet("QComboBox {\n"
+"    border: 1px solid #cce4f5;\n"
+"    border-radius: 6px;\n"
+"    padding: 2px 10px;\n"
+"    background-color: #e2eff9;\n"
+"    font: 14px;\n"
+"    color: #006fbe;\n"
+"    font: Helvetica;\n"
+"}\n"
+"")
+        self.chooseCourse.setCurrentText("")
+        self.chooseCourse.setObjectName("chooseCourse")
+        self.horizontalLayout_4.addWidget(self.chooseCourse)
+        self.horizontalLayout_4.setStretch(1, 1)
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.frame)
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(0, 90, 311, 51))
+        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_3.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setSpacing(4)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.label_id_2 = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.label_id_2.setFont(font)
+        self.label_id_2.setStyleSheet("color: #006fbe")
+        self.label_id_2.setObjectName("label_id_2")
+        self.horizontalLayout_3.addWidget(self.label_id_2)
+        self.enterID = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.enterID.setFont(font)
+        self.enterID.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #cce4f5;\n"
+"    border-radius: 6px;\n"
+"    padding: 2px 10px;\n"
+"    background-color: white;\n"
+"    font: 14px;\n"
+"    color: #006fbe;\n"
+"}\n"
+"")
+        self.enterID.setObjectName("enterID")
+        self.horizontalLayout_3.addWidget(self.enterID)
+        self.label_id = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_id.setFont(font)
+        self.label_id.setText("")
+        self.label_id.setObjectName("label_id")
+        self.horizontalLayout_3.addWidget(self.label_id)
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.frame)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 50, 301, 41))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(36)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_name = QtWidgets.QLabel(self.horizontalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(10)
+        self.label_name.setFont(font)
+        self.label_name.setStyleSheet("color: #006fbe")
+        self.label_name.setObjectName("label_name")
+        self.horizontalLayout.addWidget(self.label_name)
+        self.enterSName = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.enterSName.setFont(font)
+        self.enterSName.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #cce4f5;\n"
+"    border-radius: 6px;\n"
+"    padding: 2px 10px;\n"
+"    background-color: white;\n"
+"    font: 14px;\n"
+"    color: #006fbe;\n"
+"}\n"
+"")
+        self.enterSName.setClearButtonEnabled(False)
+        self.enterSName.setObjectName("enterSName")
+        self.horizontalLayout.addWidget(self.enterSName)
+        self.addStudentButton = QtWidgets.QPushButton(self.frame)
+        self.addStudentButton.setGeometry(QtCore.QRect(80, 190, 144, 31))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.addStudentButton.setFont(font)
+        self.addStudentButton.setStyleSheet("QPushButton {\n"
+"    background-color: #7dbae5;\n"
+"    border-style: outset;\n"
+"    border-width: 0px;\n"
+"    border-radius: 8px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    color: white;\n"
+"    min-width: 8em;\n"
+"    padding: 4px;\n"
+"}")
+        self.addStudentButton.setObjectName("addStudentButton")
+        self.label_StudentInformation = QtWidgets.QLabel(self.frame)
+        self.label_StudentInformation.setGeometry(QtCore.QRect(20, 0, 281, 41))
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(18)
+        self.label_StudentInformation.setFont(font)
+        self.label_StudentInformation.setStyleSheet("color: #006fbe")
+        self.label_StudentInformation.setObjectName("label_StudentInformation")
+        self.frame_2 = QtWidgets.QFrame(self.frame_5)
+        self.frame_2.setGeometry(QtCore.QRect(0, 320, 311, 231))
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.addCourseButton = QtWidgets.QPushButton(self.frame_2)
+        self.addCourseButton.setGeometry(QtCore.QRect(80, 150, 144, 31))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.addCourseButton.setFont(font)
+        self.addCourseButton.setStyleSheet("QPushButton {\n"
+"    background-color: #7dbae5;\n"
+"    border-style: outset;\n"
+"    border-width: 0px;\n"
+"    border-radius: 8px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    color: white;\n"
+"    min-width: 8em;\n"
+"    padding: 4px;\n"
+"}")
+        self.addCourseButton.setObjectName("addCourseButton")
+        self.horizontalLayoutWidget_4 = QtWidgets.QWidget(self.frame_2)
+        self.horizontalLayoutWidget_4.setGeometry(QtCore.QRect(10, 60, 301, 41))
+        self.horizontalLayoutWidget_4.setObjectName("horizontalLayoutWidget_4")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_4)
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_5.setSpacing(10)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.label_CourseName = QtWidgets.QLabel(self.horizontalLayoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(10)
+        self.label_CourseName.setFont(font)
+        self.label_CourseName.setStyleSheet("color: #006fbe")
+        self.label_CourseName.setObjectName("label_CourseName")
+        self.horizontalLayout_5.addWidget(self.label_CourseName)
+        self.enterCourse = QtWidgets.QLineEdit(self.horizontalLayoutWidget_4)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.enterCourse.setFont(font)
+        self.enterCourse.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #cce4f5;\n"
+"    border-radius: 6px;\n"
+"    padding: 2px 10px;\n"
+"    background-color: white;\n"
+"    font: 14px;\n"
+"    color: #006fbe;\n"
+"\n"
+"}\n"
+"")
+        self.enterCourse.setClearButtonEnabled(False)
+        self.enterCourse.setObjectName("enterCourse")
+        self.horizontalLayout_5.addWidget(self.enterCourse)
+        self.label_Courses = QtWidgets.QLabel(self.frame_2)
+        self.label_Courses.setGeometry(QtCore.QRect(100, 10, 171, 41))
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(18)
+        self.label_Courses.setFont(font)
+        self.label_Courses.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_Courses.setStyleSheet("color:#006fbe")
+        self.label_Courses.setObjectName("label_Courses")
+        self.horizontalLayoutWidget_5 = QtWidgets.QWidget(self.frame_2)
+        self.horizontalLayoutWidget_5.setGeometry(QtCore.QRect(10, 100, 301, 41))
+        self.horizontalLayoutWidget_5.setObjectName("horizontalLayoutWidget_5")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_5)
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_6.setSpacing(10)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.label_CourseCode = QtWidgets.QLabel(self.horizontalLayoutWidget_5)
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(10)
+        self.label_CourseCode.setFont(font)
+        self.label_CourseCode.setStyleSheet("color: #006fbe")
+        self.label_CourseCode.setObjectName("label_CourseCode")
+        self.horizontalLayout_6.addWidget(self.label_CourseCode)
+        self.enterCode = QtWidgets.QLineEdit(self.horizontalLayoutWidget_5)
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.enterCode.setFont(font)
+        self.enterCode.setStyleSheet("QLineEdit {\n"
+"    border: 1px solid #cce4f5;\n"
+"    border-radius: 6px;\n"
+"    padding: 2px 10px;\n"
+"    background-color: white;\n"
+"    font: 14px;\n"
+"    color: #006fbe;\n"
+"\n"
+"}\n"
+"")
+        self.enterCode.setClearButtonEnabled(False)
+        self.enterCode.setObjectName("enterCode")
+        self.horizontalLayout_6.addWidget(self.enterCode)
+        self.frame_6 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_6.setGeometry(QtCore.QRect(340, 0, 761, 731))
+        self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_6.setObjectName("frame_6")
+        self.tabWidget = QtWidgets.QTabWidget(self.frame_6)
+        self.tabWidget.setGeometry(QtCore.QRect(0, 30, 771, 701))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.tabWidget.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy)
         self.tabWidget.setMaximumSize(QtCore.QSize(2000, 2000))
         self.tabWidget.setSizeIncrement(QtCore.QSize(20000, 3392))
@@ -39,44 +300,44 @@ class Ui_MainWindow(object):
         self.tabWidget.setFont(font)
         self.tabWidget.setAutoFillBackground(False)
         self.tabWidget.setStyleSheet("QTabWidget::pane { /* The tab widget frame */\n"
-                                     "    border-top: 2px solid #006fbe;\n"
-                                     "    background-color: #cce4f5;\n"
-                                     "\n"
-                                     "}\n"
-                                     "\n"
-                                     "QTabWidget::tab-bar {\n"
-                                     "    left: 5px; /* move to the right by 5px */\n"
-                                     "}\n"
-                                     "\n"
-                                     "/* Style the tab using the tab sub-control. Note that\n"
-                                     "    it reads QTabBar _not_ QTabWidget */\n"
-                                     "QTabBar::tab {\n"
-                                     "    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-                                     "                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
-                                     "                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
-                                     ";\n"
-                                     "    border-top-left-radius: 6px;\n"
-                                     "    border-top-right-radius: 6px;\n"
-                                     "    width: 90px;\n"
-                                     "    min-width: 10ex;\n"
-                                     "    padding: 8px;\n"
-                                     "    background-color: #7dbae5;\n"
-                                     "    color: white;\n"
-                                     "    font: Bold 14px\n"
-                                     "}\n"
-                                     "\n"
-                                     "QTabBar::tab:selected {\n"
-                                     "    border: 2px;\n"
-                                     "    border-color: #7dbae5;\n"
-                                     "    border-bottom-color:  #006fbe;\n"
-                                     "    background-color: #7dbae5;\n"
-                                     "}\n"
-                                     "\n"
-                                     "QTabBar::tab:!selected {\n"
-                                     "    margin-top: 3px; /* make non-selected tabs look smaller */\n"
-                                     "    background-color: #b5d8f0;\n"
-                                     "    border-color: #9B9B9B;\n"
-                                     "}")
+"    border-top: 2px solid #006fbe;\n"
+"    background-color: #cce4f5;\n"
+"\n"
+"}\n"
+"\n"
+"QTabWidget::tab-bar {\n"
+"    left: 5px; /* move to the right by 5px */\n"
+"}\n"
+"\n"
+"/* Style the tab using the tab sub-control. Note that\n"
+"    it reads QTabBar _not_ QTabWidget */\n"
+"QTabBar::tab {\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
+"                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
+";\n"
+"    border-top-left-radius: 6px;\n"
+"    border-top-right-radius: 6px;\n"
+"    width: 90px;\n"
+"    min-width: 10ex;\n"
+"    padding: 8px;\n"
+"    background-color: #7dbae5;\n"
+"    color: white;\n"
+"    font: Bold 14px\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected {\n"
+"    border: 2px;\n"
+"    border-color: #7dbae5;\n"
+"    border-bottom-color:  #006fbe;\n"
+"    background-color: #7dbae5;\n"
+"}\n"
+"\n"
+"QTabBar::tab:!selected {\n"
+"    margin-top: 3px; /* make non-selected tabs look smaller */\n"
+"    background-color: #b5d8f0;\n"
+"    border-color: #9B9B9B;\n"
+"}")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
         self.tabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.tabWidget.setIconSize(QtCore.QSize(20, 20))
@@ -104,14 +365,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.searchInputStudent.setFont(font)
         self.searchInputStudent.setStyleSheet("QLineEdit {\n"
-                                              "    border: 1px solid #cce4f5;\n"
-                                              "    border-radius: 6px;\n"
-                                              "    padding: 2px 10px;\n"
-                                              "    background-color: white;\n"
-                                              "    font: 14px;\n"
-                                              "    color: #006fbe;\n"
-                                              "}\n"
-                                              "")
+"    border: 1px solid #cce4f5;\n"
+"    border-radius: 6px;\n"
+"    padding: 2px 10px;\n"
+"    background-color: white;\n"
+"    font: 14px;\n"
+"    color: #006fbe;\n"
+"}\n"
+"")
         self.searchInputStudent.setText("")
         self.searchInputStudent.setClearButtonEnabled(False)
         self.searchInputStudent.setObjectName("searchInputStudent")
@@ -124,30 +385,45 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.searchStudentButton.setFont(font)
         self.searchStudentButton.setStyleSheet("QPushButton{\n"
-                                               "    background-color: #7dbae5;\n"
-                                               "    border-style: outset;\n"
-                                               "    border-width: 0px;\n"
-                                               "    border-radius: 8px;\n"
-                                               "    border-color: beige;\n"
-                                               "    font: bold 14px;\n"
-                                               "    color: white;\n"
-                                               "    min-width: 8em;\n"
-                                               "    padding: 4px;\n"
-                                               "}")
+"    background-color: #7dbae5;\n"
+"    border-style: outset;\n"
+"    border-width: 0px;\n"
+"    border-radius: 8px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    color: white;\n"
+"    min-width: 8em;\n"
+"    padding: 4px;\n"
+"}")
         self.searchStudentButton.setObjectName("searchStudentButton")
         self.horizontalLayout_14.addWidget(self.searchStudentButton)
         self.horizontalLayout_13.addLayout(self.horizontalLayout_14)
         self.StudentTable = QtWidgets.QTableView(self.tab)
         self.StudentTable.setEnabled(True)
-        self.StudentTable.setGeometry(QtCore.QRect(10, 50, 741, 561))
+        self.StudentTable.setGeometry(QtCore.QRect(10, 50, 741, 551))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         self.StudentTable.setFont(font)
-        self.StudentTable.setStyleSheet("background-color: rgb(255, 255, 255)\n"
-                                        "")
+        self.StudentTable.setStyleSheet("QTableView {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border: 1px solid #cce4f5;\n"
+"    font: Helvetica;\n"
+"    color: #006fbe;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QTableView::item:selected {\n"
+"    background-color: #b5d8f0; /* Background color of selected item */\n"
+"\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    color: #006fbe;\n"
+"    font-weight: bold; \n"
+"}")
         self.StudentTable.setObjectName("StudentTable")
         self.statusUpdateS = QtWidgets.QTextEdit(self.tab)
-        self.statusUpdateS.setGeometry(QtCore.QRect(10, 620, 741, 21))
+        self.statusUpdateS.setGeometry(QtCore.QRect(10, 620, 621, 21))
         font = QtGui.QFont()
         font.setPointSize(-1)
         font.setBold(False)
@@ -155,20 +431,38 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.statusUpdateS.setFont(font)
         self.statusUpdateS.setStyleSheet("QTextEdit {\n"
-                                         "    border: 1px solid #f6fafd;\n"
-                                         "\n"
-                                         "    padding: 2px 10px;\n"
-                                         "    background-color: #f6fafd;\n"
-                                         "    font: 9px;\n"
-                                         "     border-bottom-color:  #006fbe;\n"
-                                         "    color: #006fbe;\n"
-                                         "}\n"
-                                         "")
-        self.statusUpdateS.setVerticalScrollBarPolicy(
-            QtCore.Qt.ScrollBarAlwaysOff)
+"    border: 1px solid #f6fafd;\n"
+"\n"
+"    padding: 2px 10px;\n"
+"    background-color: #f6fafd;\n"
+"    font: 9px;\n"
+"     border-bottom-color:  #006fbe;\n"
+"    color: #006fbe;\n"
+"}\n"
+"")
+        self.statusUpdateS.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.statusUpdateS.setReadOnly(True)
         self.statusUpdateS.setAcceptRichText(True)
         self.statusUpdateS.setObjectName("statusUpdateS")
+        self.deleteStudentButton = QtWidgets.QPushButton(self.tab)
+        self.deleteStudentButton.setGeometry(QtCore.QRect(640, 610, 111, 30))
+        self.deleteStudentButton.setMinimumSize(QtCore.QSize(0, 25))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.deleteStudentButton.setFont(font)
+        self.deleteStudentButton.setStyleSheet("QPushButton {\n"
+"    background-color: #7dbae5;\n"
+"    border-style: outset;\n"
+"    border-width: 0px;\n"
+"    border-radius: 8px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    color: white;\n"
+"}")
+        self.deleteStudentButton.setObjectName("deleteStudentButton")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -190,16 +484,16 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.searchInputCourse.setFont(font)
         self.searchInputCourse.setStyleSheet("QLineEdit {\n"
-                                             "    border: 1px solid #cce4f5;\n"
-                                             "    border-radius: 6px;\n"
-                                             "    padding: 2px 10px;\n"
-                                             "    background-color: white;\n"
-                                             "    font: 14px;\n"
-                                             "    color: #006fbe;\n"
-                                             "}\n"
-                                             "background-color: white\n"
-                                             "\n"
-                                             "")
+"    border: 1px solid #cce4f5;\n"
+"    border-radius: 6px;\n"
+"    padding: 2px 10px;\n"
+"    background-color: white;\n"
+"    font: 14px;\n"
+"    color: #006fbe;\n"
+"}\n"
+"background-color: white\n"
+"\n"
+"")
         self.searchInputCourse.setText("")
         self.searchInputCourse.setClearButtonEnabled(False)
         self.searchInputCourse.setObjectName("searchInputCourse")
@@ -213,28 +507,41 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.searchCourseButton.setFont(font)
         self.searchCourseButton.setStyleSheet("QPushButton{\n"
-                                              "    background-color: #7dbae5;\n"
-                                              "    border-style: outset;\n"
-                                              "    border-width: 0px;\n"
-                                              "    border-radius: 8px;\n"
-                                              "    border-color: beige;\n"
-                                              "    font: bold 14px;\n"
-                                              "    color: white;\n"
-                                              "    min-width: 8em;\n"
-                                              "    padding: 4px;\n"
-                                              "}")
+"    background-color: #7dbae5;\n"
+"    border-style: outset;\n"
+"    border-width: 0px;\n"
+"    border-radius: 8px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    color: white;\n"
+"    min-width: 8em;\n"
+"    padding: 4px;\n"
+"}")
         self.searchCourseButton.setObjectName("searchCourseButton")
         self.horizontalLayout_10.addWidget(self.searchCourseButton)
         self.CourseTable = QtWidgets.QTableView(self.tab_2)
-        self.CourseTable.setSizePolicy(
-            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         self.CourseTable.setEnabled(True)
-        self.CourseTable.setGeometry(QtCore.QRect(10, 50, 741, 561))
-        self.CourseTable.setStyleSheet("background-color: white\n"
-                                       "")
+        self.CourseTable.setGeometry(QtCore.QRect(10, 50, 741, 551))
+        self.CourseTable.setStyleSheet("QTableView {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border: 1px solid #cce4f5;\n"
+"    font: Helvetica;\n"
+"    color: #006fbe;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QTableView::item:selected {\n"
+"    background-color: #b5d8f0; /* Background color of selected item */\n"
+"\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    color: #006fbe;\n"
+"    font-weight: bold; \n"
+"}")
         self.CourseTable.setObjectName("CourseTable")
         self.statusUpdateC = QtWidgets.QTextEdit(self.tab_2)
-        self.statusUpdateC.setGeometry(QtCore.QRect(10, 620, 741, 21))
+        self.statusUpdateC.setGeometry(QtCore.QRect(10, 620, 621, 21))
         font = QtGui.QFont()
         font.setPointSize(-1)
         font.setBold(False)
@@ -242,326 +549,69 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.statusUpdateC.setFont(font)
         self.statusUpdateC.setStyleSheet("QTextEdit {\n"
-                                         "    border: 1px solid #f6fafd;\n"
-                                         "\n"
-                                         "    padding: 2px 10px;\n"
-                                         "    background-color: #f6fafd;\n"
-                                         "    font: 9px;\n"
-                                         "     border-bottom-color:  #006fbe;\n"
-                                         "    color: #006fbe;\n"
-                                         "}\n"
-                                         "")
-        self.statusUpdateC.setVerticalScrollBarPolicy(
-            QtCore.Qt.ScrollBarAlwaysOff)
+"    border: 1px solid #f6fafd;\n"
+"\n"
+"    padding: 2px 10px;\n"
+"    background-color: #f6fafd;\n"
+"    font: 9px;\n"
+"     border-bottom-color:  #006fbe;\n"
+"    color: #006fbe;\n"
+"}\n"
+"")
+        self.statusUpdateC.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.statusUpdateC.setReadOnly(True)
         self.statusUpdateC.setObjectName("statusUpdateC")
+        self.deleteCourseButton = QtWidgets.QPushButton(self.tab_2)
+        self.deleteCourseButton.setGeometry(QtCore.QRect(640, 610, 111, 30))
+        self.deleteCourseButton.setMinimumSize(QtCore.QSize(0, 25))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.deleteCourseButton.setFont(font)
+        self.deleteCourseButton.setStyleSheet("QPushButton {\n"
+"    background-color: #7dbae5;\n"
+"    border-style: outset;\n"
+"    border-width: 0px;\n"
+"    border-radius: 8px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    color: white;\n"
+"\n"
+"}")
+        self.deleteCourseButton.setObjectName("deleteCourseButton")
         self.tabWidget.addTab(self.tab_2, "")
-        self.frame_5 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_5.setGeometry(QtCore.QRect(10, 70, 321, 521))
-        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_5.setObjectName("frame_5")
-        self.frame = QtWidgets.QFrame(self.frame_5)
-        self.frame.setGeometry(QtCore.QRect(10, 20, 311, 231))
-        self.frame.setStyleSheet("backgroun-color: white\n"
-                                 "")
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.frame)
-        self.horizontalLayoutWidget_3.setGeometry(
-            QtCore.QRect(0, 140, 301, 41))
-        self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(
-            self.horizontalLayoutWidget_3)
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_4.setSpacing(29)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.label_course = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(10)
-        self.label_course.setFont(font)
-        self.label_course.setStyleSheet("color: #006fbe")
-        self.label_course.setObjectName("label_course")
-        self.horizontalLayout_4.addWidget(self.label_course)
-        self.chooseCourse = QtWidgets.QComboBox(self.horizontalLayoutWidget_3)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.chooseCourse.setFont(font)
-        self.chooseCourse.setStyleSheet("QComboBox {\n"
-                                        "    border: 1px solid #cce4f5;\n"
-                                        "    border-radius: 6px;\n"
-                                        "    padding: 2px 10px;\n"
-                                        "    background-color: #e2eff9;\n"
-                                        "    font: 14px;\n"
-                                        "}\n"
-                                        "")
-        self.chooseCourse.setCurrentText("")
-        self.chooseCourse.setObjectName("chooseCourse")
-        self.horizontalLayout_4.addWidget(self.chooseCourse)
-        self.horizontalLayout_4.setStretch(1, 1)
-        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.frame)
-        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(0, 90, 311, 51))
-        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(
-            self.horizontalLayoutWidget_2)
-        self.horizontalLayout_3.setSizeConstraint(
-            QtWidgets.QLayout.SetDefaultConstraint)
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setSpacing(4)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_id_2 = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        font.setStrikeOut(False)
-        self.label_id_2.setFont(font)
-        self.label_id_2.setStyleSheet("color: #006fbe")
-        self.label_id_2.setObjectName("label_id_2")
-        self.horizontalLayout_3.addWidget(self.label_id_2)
-        self.enterID = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.enterID.setFont(font)
-        self.enterID.setStyleSheet("QLineEdit {\n"
-                                   "    border: 1px solid #cce4f5;\n"
-                                   "    border-radius: 6px;\n"
-                                   "    padding: 2px 10px;\n"
-                                   "    background-color: white;\n"
-                                   "    font: 14px;\n"
-                                   "    color: #006fbe;\n"
-                                   "}\n"
-                                   "")
-        self.enterID.setObjectName("enterID")
-        self.horizontalLayout_3.addWidget(self.enterID)
-        self.label_id = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_id.setFont(font)
-        self.label_id.setText("")
-        self.label_id.setObjectName("label_id")
-        self.horizontalLayout_3.addWidget(self.label_id)
-        self.horizontalLayoutWidget = QtWidgets.QWidget(self.frame)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 50, 301, 41))
-        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(
-            self.horizontalLayoutWidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setSpacing(36)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label_name = QtWidgets.QLabel(self.horizontalLayoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(10)
-        self.label_name.setFont(font)
-        self.label_name.setStyleSheet("color: #006fbe")
-        self.label_name.setObjectName("label_name")
-        self.horizontalLayout.addWidget(self.label_name)
-        self.enterSName = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.enterSName.setFont(font)
-        self.enterSName.setStyleSheet("QLineEdit {\n"
-                                      "    border: 1px solid #cce4f5;\n"
-                                      "    border-radius: 6px;\n"
-                                      "    padding: 2px 10px;\n"
-                                      "    background-color: white;\n"
-                                      "    font: 14px;\n"
-                                      "    color: #006fbe;\n"
-                                      "}\n"
-                                      "")
-        self.enterSName.setClearButtonEnabled(False)
-        self.enterSName.setObjectName("enterSName")
-        self.horizontalLayout.addWidget(self.enterSName)
-        self.addStudentButton = QtWidgets.QPushButton(self.frame)
-        self.addStudentButton.setGeometry(QtCore.QRect(80, 190, 144, 31))
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setItalic(False)
-        font.setWeight(75)
-        self.addStudentButton.setFont(font)
-        self.addStudentButton.setStyleSheet("QPushButton {\n"
-                                            "    background-color: #7dbae5;\n"
-                                            "    border-style: outset;\n"
-                                            "    border-width: 0px;\n"
-                                            "    border-radius: 8px;\n"
-                                            "    border-color: beige;\n"
-                                            "    font: bold 14px;\n"
-                                            "    color: white;\n"
-                                            "    min-width: 8em;\n"
-                                            "    padding: 4px;\n"
-                                            "}")
-        self.addStudentButton.setObjectName("addStudentButton")
-        self.label_StudentInformation = QtWidgets.QLabel(self.frame)
-        self.label_StudentInformation.setGeometry(QtCore.QRect(20, 0, 281, 41))
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(18)
-        self.label_StudentInformation.setFont(font)
-        self.label_StudentInformation.setStyleSheet("color: #006fbe")
-        self.label_StudentInformation.setObjectName("label_StudentInformation")
-        self.frame_2 = QtWidgets.QFrame(self.frame_5)
-        self.frame_2.setGeometry(QtCore.QRect(0, 320, 311, 231))
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.addCourseButton = QtWidgets.QPushButton(self.frame_2)
-        self.addCourseButton.setGeometry(QtCore.QRect(80, 150, 144, 31))
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setItalic(False)
-        font.setWeight(75)
-        self.addCourseButton.setFont(font)
-        self.addCourseButton.setStyleSheet("QPushButton {\n"
-                                           "    background-color: #7dbae5;\n"
-                                           "    border-style: outset;\n"
-                                           "    border-width: 0px;\n"
-                                           "    border-radius: 8px;\n"
-                                           "    border-color: beige;\n"
-                                           "    font: bold 14px;\n"
-                                           "    color: white;\n"
-                                           "    min-width: 8em;\n"
-                                           "    padding: 4px;\n"
-                                           "}")
-        self.addCourseButton.setObjectName("addCourseButton")
-        self.horizontalLayoutWidget_4 = QtWidgets.QWidget(self.frame_2)
-        self.horizontalLayoutWidget_4.setGeometry(
-            QtCore.QRect(10, 60, 301, 41))
-        self.horizontalLayoutWidget_4.setObjectName("horizontalLayoutWidget_4")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(
-            self.horizontalLayoutWidget_4)
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_5.setSpacing(10)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.label_CourseName = QtWidgets.QLabel(self.horizontalLayoutWidget_4)
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(10)
-        self.label_CourseName.setFont(font)
-        self.label_CourseName.setStyleSheet("color: #006fbe")
-        self.label_CourseName.setObjectName("label_CourseName")
-        self.horizontalLayout_5.addWidget(self.label_CourseName)
-        self.enterCourse = QtWidgets.QLineEdit(self.horizontalLayoutWidget_4)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.enterCourse.setFont(font)
-        self.enterCourse.setStyleSheet("QLineEdit {\n"
-                                       "    border: 1px solid #cce4f5;\n"
-                                       "    border-radius: 6px;\n"
-                                       "    padding: 2px 10px;\n"
-                                       "    background-color: white;\n"
-                                       "    font: 14px;\n"
-                                       "    color: #006fbe;\n"
-                                       "\n"
-                                       "}\n"
-                                       "")
-        self.enterCourse.setClearButtonEnabled(False)
-        self.enterCourse.setObjectName("enterCourse")
-        self.horizontalLayout_5.addWidget(self.enterCourse)
-        self.label_Courses = QtWidgets.QLabel(self.frame_2)
-        self.label_Courses.setGeometry(QtCore.QRect(100, 10, 171, 41))
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(18)
-        self.label_Courses.setFont(font)
-        self.label_Courses.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_Courses.setStyleSheet("color:#006fbe")
-        self.label_Courses.setObjectName("label_Courses")
-        self.horizontalLayoutWidget_5 = QtWidgets.QWidget(self.frame_2)
-        self.horizontalLayoutWidget_5.setGeometry(
-            QtCore.QRect(10, 100, 301, 41))
-        self.horizontalLayoutWidget_5.setObjectName("horizontalLayoutWidget_5")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(
-            self.horizontalLayoutWidget_5)
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_6.setSpacing(10)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.label_CourseCode = QtWidgets.QLabel(self.horizontalLayoutWidget_5)
-        font = QtGui.QFont()
-        font.setFamily("Helvetica")
-        font.setPointSize(10)
-        self.label_CourseCode.setFont(font)
-        self.label_CourseCode.setStyleSheet("color: #006fbe")
-        self.label_CourseCode.setObjectName("label_CourseCode")
-        self.horizontalLayout_6.addWidget(self.label_CourseCode)
-        self.enterCode = QtWidgets.QLineEdit(self.horizontalLayoutWidget_5)
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.enterCode.setFont(font)
-        self.enterCode.setStyleSheet("QLineEdit {\n"
-                                     "    border: 1px solid #cce4f5;\n"
-                                     "    border-radius: 6px;\n"
-                                     "    padding: 2px 10px;\n"
-                                     "    background-color: white;\n"
-                                     "    font: 14px;\n"
-                                     "    color: #006fbe;\n"
-                                     "\n"
-                                     "}\n"
-                                     "")
-        self.enterCode.setClearButtonEnabled(False)
-        self.enterCode.setObjectName("enterCode")
-        self.horizontalLayout_6.addWidget(self.enterCode)
-        self.frame_5.raise_()
-        self.tabWidget.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate(
-            "MainWindow", "Simple Student Information System"))
-        self.searchInputStudent.setPlaceholderText(_translate(
-            "MainWindow", "  Search student or ID number..."))
-        self.searchStudentButton.setText(_translate("MainWindow", "Search"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(
-            self.tab), _translate("MainWindow", "Student List"))
-        self.searchInputCourse.setPlaceholderText(
-            _translate("MainWindow", "  Search course..."))
-        self.searchCourseButton.setText(_translate("MainWindow", "Search"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(
-            self.tab_2), _translate("MainWindow", "Course List"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Simple Student Information System"))
         self.label_course.setText(_translate("MainWindow", "Course:"))
         self.label_id_2.setText(_translate("MainWindow", "ID number:"))
-        self.enterID.setPlaceholderText(_translate(
-            "MainWindow", "  Enter ID number of student"))
+        self.enterID.setPlaceholderText(_translate("MainWindow", "  Enter ID number of student"))
         self.label_name.setText(_translate("MainWindow", "Name:"))
-        self.enterSName.setPlaceholderText(
-            _translate("MainWindow", "  Enter name of student"))
+        self.enterSName.setPlaceholderText(_translate("MainWindow", "  Enter name of student"))
         self.addStudentButton.setText(_translate("MainWindow", "Add Student"))
-        self.label_StudentInformation.setText(
-            _translate("MainWindow", "Student Information"))
+        self.label_StudentInformation.setText(_translate("MainWindow", "Student Information"))
         self.addCourseButton.setText(_translate("MainWindow", "Add Course"))
         self.label_CourseName.setText(_translate("MainWindow", "Course Name:"))
-        self.enterCourse.setPlaceholderText(
-            _translate("MainWindow", "  Enter course"))
+        self.enterCourse.setPlaceholderText(_translate("MainWindow", "  Enter course"))
         self.label_Courses.setText(_translate("MainWindow", "Courses"))
         self.label_CourseCode.setText(_translate("MainWindow", "Course Code:"))
-        self.enterCode.setPlaceholderText(
-            _translate("MainWindow", "  Enter code"))
+        self.enterCode.setPlaceholderText(_translate("MainWindow", "  Enter code"))
+        self.searchInputStudent.setPlaceholderText(_translate("MainWindow", "  Search student or ID number..."))
+        self.searchStudentButton.setText(_translate("MainWindow", "Search"))
+        self.deleteStudentButton.setText(_translate("MainWindow", "Delete"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Student List"))
+        self.searchInputCourse.setPlaceholderText(_translate("MainWindow", "  Search course..."))
+        self.searchCourseButton.setText(_translate("MainWindow", "Search"))
+        self.deleteCourseButton.setText(_translate("MainWindow", "Delete"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Course List"))

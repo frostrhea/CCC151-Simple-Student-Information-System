@@ -18,18 +18,22 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(9)
         MainWindow.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../CCC151-Simple-Student-Information-System/winIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("background-color: #f6fafd\n"
 "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame_5 = QtWidgets.QFrame(self.centralwidget)
         self.frame_5.setGeometry(QtCore.QRect(10, 70, 321, 521))
+        self.frame_5.setStyleSheet("")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
         self.frame = QtWidgets.QFrame(self.frame_5)
         self.frame.setGeometry(QtCore.QRect(10, 20, 311, 231))
-        self.frame.setStyleSheet("backgroun-color: white\n"
+        self.frame.setStyleSheet("background-color: #f6fafd\n"
 "")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -65,7 +69,26 @@ class Ui_MainWindow(object):
 "    color: #006fbe;\n"
 "    font: Helvetica;\n"
 "}\n"
-"")
+"\n"
+"QComboBox::drop-down {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: right;\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: #cce4f5;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    background-color: #e2eff9;\n"
+"\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(D:/Documents/codes/python/CCC151-Simple-Student-Information-System/down-arrow.png);\n"
+"    width: 15px;  \n"
+"    height: 15px;\n"
+"}")
         self.chooseCourse.setCurrentText("")
         self.chooseCourse.setObjectName("chooseCourse")
         self.horizontalLayout_4.addWidget(self.chooseCourse)
@@ -615,3 +638,5 @@ class Ui_MainWindow(object):
         self.searchCourseButton.setText(_translate("MainWindow", "Search"))
         self.deleteCourseButton.setText(_translate("MainWindow", "Delete"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Course List"))
+
+

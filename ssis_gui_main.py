@@ -44,7 +44,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 text = str(pdCSV.iloc[row, column])
                 item = QtGui.QStandardItem(text)
                 model.setItem(row, column, item)
-                print(f"text: {text}")
+                #print(f"text: {text}")
                 if column == 2:
                     item.setEditable(False)
                 if column in [0, 1, 2]:
@@ -57,11 +57,13 @@ class MainWindow(QtWidgets.QMainWindow):
     def adjustTableColumns(self, table):
         header = table.horizontalHeader()
         header.setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
-        for i in range(header.count()):
-            if table == self.gui_ssis.StudentTable:
-                header.resizeSection(i, 240)
-            elif table == self.gui_ssis.CourseTable:
-                header.resizeSection(i, 360)
+        if table == self.gui_ssis.StudentTable:
+                header.resizeSection(0, 360)  
+                header.resizeSection(1, 151)  
+                header.resizeSection(2, 200)  
+        elif table == self.gui_ssis.CourseTable:
+                header.resizeSection(0, 240)  
+                header.resizeSection(1, 480)  
 
     def clearModel(self, model, rows=0, cols=0):
         model.clear()

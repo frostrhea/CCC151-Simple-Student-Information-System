@@ -88,10 +88,13 @@ class Course:
     def updateCourse(self, value, row, columnIndex, newValue):
         if columnIndex == 0:  # Course code column
             self.courses_df.at[row, 'courseCode'] = newValue
+            self.courses_df.at[row, 'courseCode'] = newValue
+            # Update the student_info.csv file
+            studentObject.updateStudentCourse(value, newValue)
         elif columnIndex == 1:  # Course name column
             self.courses_df.at[row, 'courseName'] = newValue
         self.courses_df.to_csv('courses.csv', index=False)
-        print(f"Course '{value}' updated successfully.")
+        print(f"Course '{value}' updated to '{newValue}' successfully.")
 
 
     def courseCodeExists(self, courseCode):
@@ -195,23 +198,30 @@ class StudentInfo:
                 found = True
                 self.student_df.at[row, 'course'] = newValue
                 self.student_df.to_csv('student_info.csv', index=False)
-                print(f"Student course '{value}' updated successfully.\n")
+                print(f"Student's course updated successfully.\n")
             else:
                 print(f"Course code '{newValue}' not found.")
                 return
 
         if columnIndex == 0:  # Student name column
+            found = True
             self.student_df.at[row, 'name'] = newValue
+            self.student_df.to_csv('student_info.csv', index=False)
+            print(f"Student '{value}' updated to '{newValue}' successfully.\n")
         elif columnIndex == 1:  # Student id column
+            found = True
             self.student_df.at[row, 'id'] = newValue
-
-        self.student_df.to_csv('student_info.csv', index=False)
-        print(f"Student '{value}' information updated successfully.\n")
-
+            self.student_df.to_csv('student_info.csv', index=False)
+            print(f"Student ID '{value}' updated to '{newValue}' successfully.\n")
+        
         if not found:
             print(f"Student '{value}' not found.")
 
 
+    def updateStudentCourse(self, old_course_code, new_course_code):
+        self.student_df.loc[self.student_df['course'] == old_course_code, 'course'] = new_course_code
+        self.student_df.to_csv('student_info.csv', index=False)
+        print(f"Updated course for students with course code '{old_course_code}' to '{new_course_code}'.")
 
                 
     def studentIDExists(self, studentID):

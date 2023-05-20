@@ -638,5 +638,3 @@ class Ui_MainWindow(object):
         self.searchCourseButton.setText(_translate("MainWindow", "Search"))
         self.deleteCourseButton.setText(_translate("MainWindow", "Delete"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Course List"))
-
-

@@ -43,6 +43,8 @@ class Course:
             self.courses_df.drop(index, inplace=True)
             self.courses_df.to_csv('courses.csv', index=False)
             print(f"Course '{code}' has been deleted.\n")
+            studentObject.deleteStudentUnderCourse(code)
+            
 
     # function to display a course
     # Prints the course through its index
@@ -217,6 +219,10 @@ class StudentInfo:
         if not found:
             print(f"Student '{value}' not found.")
 
+    def deleteStudentUnderCourse(self, code):
+        self.student_df = self.student_df[self.student_df['course'] != code]
+        self.student_df.to_csv('student_info.csv', index=False)
+        print(f"All students under course code '{code}' have been removed.\n")
 
     def updateStudentCourse(self, old_course_code, new_course_code):
         self.student_df.loc[self.student_df['course'] == old_course_code, 'course'] = new_course_code

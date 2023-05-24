@@ -75,22 +75,29 @@ class Ui_MainWindow(object):
 "    height: 20px;\n"
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: right;\n"
-"    border-left-width: 1px;\n"
+"    border-left-width: 0px;\n"
 "    border-left-color: #cce4f5;\n"
 "    border-left-style: solid;\n"
 "    border-top-right-radius: 6px;\n"
 "    border-bottom-right-radius: 6px;\n"
 "    background-color: #e2eff9;\n"
-"\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
 "    image: url(D:/Documents/codes/python/CCC151-Simple-Student-Information-System/down-arrow.png);\n"
 "    width: 15px;  \n"
 "    height: 15px;\n"
-"}")
-        self.chooseCourse.setCurrentText("")
+"}\n"
+"\n"
+"QComboBox::item {\n"
+"    background-color: #e2eff9;\n"
+"    color:  #006fbe;\n"
+"}\n"
+"\n"
+"")
         self.chooseCourse.setObjectName("chooseCourse")
+        self.chooseCourse.addItem("")
+        self.chooseCourse.addItem("")
         self.horizontalLayout_4.addWidget(self.chooseCourse)
         self.horizontalLayout_4.setStretch(1, 1)
         self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.frame)
@@ -443,7 +450,60 @@ class Ui_MainWindow(object):
 "QHeaderView::section {\n"
 "    color: #006fbe;\n"
 "    font-weight: bold; \n"
-"}")
+"}\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    border: none;\n"
+"    background-color: #e2eff9;\n"
+"    width: 12px;\n"
+"    margin: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color: #b5d8f0;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical:hover {\n"
+"    background-color: #b5d8f0;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:vertical {\n"
+"    height: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical,\n"
+"QScrollBar::sub-page:vertical {\n"
+"    background-color: none;\n"
+"}\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background-color: #e2eff9;\n"
+"    height: 12px;\n"
+"    margin: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background-color: #b5d8f0;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal:hover {\n"
+"    background-color: #b5d8f0;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal,\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    width: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal,\n"
+"QScrollBar::sub-page:horizontal {\n"
+"    background-color: none;\n"
+"}\n"
+"")
         self.StudentTable.setObjectName("StudentTable")
         self.statusUpdateS = QtWidgets.QTextEdit(self.tab)
         self.statusUpdateS.setGeometry(QtCore.QRect(10, 620, 621, 21))
@@ -561,7 +621,61 @@ class Ui_MainWindow(object):
 "QHeaderView::section {\n"
 "    color: #006fbe;\n"
 "    font-weight: bold; \n"
-"}")
+"}\n"
+"\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    border: none;\n"
+"    background-color: #e2eff9;\n"
+"    width: 12px;\n"
+"    margin: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color: #b5d8f0;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical:hover {\n"
+"    background-color: #b5d8f0;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:vertical {\n"
+"    height: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical,\n"
+"QScrollBar::sub-page:vertical {\n"
+"    background-color: none;\n"
+"}\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background-color: #e2eff9;\n"
+"    height: 12px;\n"
+"    margin: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background-color: #b5d8f0;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal:hover {\n"
+"    background-color: #b5d8f0;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal,\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    width: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal,\n"
+"QScrollBar::sub-page:horizontal {\n"
+"    background-color: none;\n"
+"}\n"
+"")
         self.CourseTable.setObjectName("CourseTable")
         self.statusUpdateC = QtWidgets.QTextEdit(self.tab_2)
         self.statusUpdateC.setGeometry(QtCore.QRect(10, 620, 621, 21))
@@ -611,13 +725,16 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Simple Student Information System"))
         self.label_course.setText(_translate("MainWindow", "Course:"))
+        self.chooseCourse.setCurrentText(_translate("MainWindow", "rwe"))
+        self.chooseCourse.setItemText(0, _translate("MainWindow", "rwe"))
+        self.chooseCourse.setItemText(1, _translate("MainWindow", "fewf"))
         self.label_id_2.setText(_translate("MainWindow", "ID number:"))
         self.enterID.setPlaceholderText(_translate("MainWindow", "  Enter ID number of student"))
         self.label_name.setText(_translate("MainWindow", "Name:"))

@@ -1,33 +1,30 @@
 import csv
 import pandas as pd
 
-# global array for class Student to refer for existing courses
-course_list = pd.read_csv("courses.csv")['courseCode'].tolist()
-course_names = pd.read_csv("courses.csv")['courseName'].tolist()
+
 
 class Course:
     def __init__(self):
         self.columns = ['courseCode', 'courseName']
         self.courses_df = pd.read_csv(
             "courses.csv", header=0, names=self.columns)
-
-
-    # function to add a course to the list
-    # Checks if input is in the list, then adds it to the list by appending it to csv
+        #self.course_list = self.courses_df['courseCode'].tolist()
+        #self.course_names = self.courses_df['courseName'].tolist()
 
     def returnCourseCSV(self):
         return self.courses_df
 
+    # function to add a course to the list
+    # Checks if input is in the list, then adds it to the list by appending it to csv
     def addCourse(self, value, code):
-        if code in course_list or value in course_list:
-            print(f"Course {value} already exists.")
+        if code in self.courses_df['courseCode'].values:    
+            print(f"Course code already exists.")       
             return
         else:
             new_course = {'courseName': value, 'courseCode': code}
             self.courses_df = self.courses_df.append(
                 new_course, ignore_index=True)
             self.courses_df.to_csv('courses.csv', index=False, header=True)
-            course_names.append(value)
             print(f"Course '{value}' added.\n")
 
     #           
@@ -100,13 +97,11 @@ class Course:
 
 
     def courseCodeExists(self, courseCode):
-        #course_df = self.returnCourseCSV()
         if courseCode in self.courses_df['courseCode'].values:
             return True
-        #return courseCode in course_df['courseCode'].values
+
     
     def courseCodeNotinList(self, course):
-        #course_list = self.returnCourseCSV()
         if course not in self.courses_df['courseCode'].values:
             return True
         
@@ -116,6 +111,9 @@ class Course:
         course_code = row['courseCode'].values[0]
         return course_code
     
+    def getCourseNames(self):
+        return self.courses_df['courseName'].astype(str).tolist()
+    
 # -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 
@@ -124,15 +122,14 @@ class StudentInfo:
         self.columns = ['name', 'id', 'course']
         self.student_df = pd.read_csv(
             "student_info.csv", header=0, names=self.columns)
-
-        
+ 
 
     def returnStudentCSV(self):
         return self.student_df
 
     # function to add a student
     def addStudent(self, name, id, course):
-        if str(id) in str(self.student_df['id'].values):
+        if any(self.student_df['id'] == id):
             print(f"Student with ID '{id}' already exists.")
             return
         else:

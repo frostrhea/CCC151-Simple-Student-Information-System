@@ -45,7 +45,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 item = QtGui.QStandardItem(text)
                 model.setItem(row, column, item)
                 #print(f"text: {text}")
-                if column == 2:
+                if column in [0, 1, 2]:
                     item.setEditable(False)
                 if column in [0, 1, 2]:
                     item.setTextAlignment(QtCore.Qt.AlignCenter)
@@ -58,12 +58,12 @@ class MainWindow(QtWidgets.QMainWindow):
         header = table.horizontalHeader()
         header.setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
         if table == self.gui_ssis.StudentTable:
-                header.resizeSection(0, 360)  
+                header.resizeSection(0, 348)  
                 header.resizeSection(1, 151)  
                 header.resizeSection(2, 200)  
         elif table == self.gui_ssis.CourseTable:
                 header.resizeSection(0, 240)  
-                header.resizeSection(1, 480)  
+                header.resizeSection(1, 459)  
 
     def clearModel(self, model, rows=0, cols=0):
         model.clear()
@@ -93,8 +93,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setStandardItemModel()
         self.gui_ssis.CourseTable.model().layoutChanged.emit()
         self.setComboBoxModel()
-    
-    #--FIXED---------------------------------------------------------- 
+        self.gui_ssis.enterCourse.clear()
+        self.gui_ssis.enterCode.clear()
+        
+    #------------------------------------------------------------ 
     def add_student_button_clicked(self):
         student_name = self.gui_ssis.enterSName.text()
         student_id = self.gui_ssis.enterID.text()
@@ -105,27 +107,34 @@ class MainWindow(QtWidgets.QMainWindow):
         self.studentObject.addStudent(student_name, student_id, student_course_code)
         self.setStandardItemModel()
         self.gui_ssis.StudentTable.model().layoutChanged.emit()
-
+        self.gui_ssis.enterSName.clear()
+        self.gui_ssis.enterID.clear()
 
     def delete_course_row(self):
-        #selection_model= self.gui_ssis.CourseTable.selectionModel()
         selected_rows = self.gui_ssis.CourseTable.currentIndex().row()
         column_index = 0
         course = self.gui_ssis.CourseTable.model().index(selected_rows, column_index).data()
-        self.courseObject.deleteCourse(course)
+        reply = QtWidgets.QMessageBox.question(self, "Delete Confirmation", "Are you sure you want to delete this course?",
+                                 QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+        if reply == QtWidgets.QMessageBox.Yes:
+            self.courseObject.deleteCourse(course)
 
         self.courseModel = self.setSModel(self.courseObject.returnCourseCSV(), self.courseModel)
         self.setStandardItemModel()
         self.gui_ssis.CourseTable.model().layoutChanged.emit()
+        self.setComboBoxModel()
 
     
-    #--FIXED ----
+    #------
     def delete_student_row(self):
         #selection_model= self.gui_ssis.StudentTable.selectionModel()
         selected_rows = self.gui_ssis.StudentTable.currentIndex().row()
         column_index = 1
         student = self.gui_ssis.StudentTable.model().index(selected_rows, column_index).data()
-        self.studentObject.deleteStudent(student)
+        reply = QtWidgets.QMessageBox.question(self, "Delete Confirmation", "Are you sure you want to delete this student?",
+                                 QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+        if reply == QtWidgets.QMessageBox.Yes:
+            self.studentObject.deleteStudent(student)
 
         self.studentModel = self.setSModel(self.studentObject.returnStudentCSV(), self.studentModel)
         self.setStandardItemModel()
@@ -135,7 +144,7 @@ class MainWindow(QtWidgets.QMainWindow):
     #clear combo box and populate items based on course_names df
     def setComboBoxModel(self):
         self.gui_ssis.chooseCourse.clear() 
-        self.gui_ssis.chooseCourse.addItems(csvObject.course_names) 
+        self.gui_ssis.chooseCourse.addItems(self.courseObject.getCourseNames()) 
      
         
     def search_course_button_clicked(self): 
@@ -186,11 +195,12 @@ class MainWindow(QtWidgets.QMainWindow):
                             self.courseObject.updateCourse(current_value, row, column, new_value)
                             self.setStandardItemModel()
                             self.gui_ssis.CourseTable.model().layoutChanged.emit()
-                            self.setComboBoxModel()
+                            #self.setComboBoxModel()
                     if column == 1:
                             self.courseObject.updateCourse(current_value, row, column, new_value)
                             self.setStandardItemModel()
                             self.gui_ssis.CourseTable.model().layoutChanged.emit()
+                            self.setComboBoxModel()
                 else:
                     pass
 

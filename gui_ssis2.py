@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         font.setPointSize(9)
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../CCC151-Simple-Student-Information-System/winIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../CCC151-V1 Simple-Student-Information-System/winIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("background-color: #f6fafd\n"
 "")
@@ -84,7 +84,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(D:/Documents/codes/python/CCC151-Simple-Student-Information-System/down-arrow.png);\n"
+"    image: url(D:/Documents/codes/python/CCC151-V1 Simple-Student-Information-System/down-arrow.png);\n"
 "    width: 15px;  \n"
 "    height: 15px;\n"
 "}\n"

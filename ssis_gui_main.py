@@ -1,6 +1,5 @@
 import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
-import pandas as pd
 from gui_ssis2 import Ui_MainWindow
 import Student_and_Course_class as csvObject
 
@@ -114,7 +113,7 @@ class MainWindow(QtWidgets.QMainWindow):
         selected_rows = self.gui_ssis.CourseTable.currentIndex().row()
         column_index = 0
         course = self.gui_ssis.CourseTable.model().index(selected_rows, column_index).data()
-        reply = QtWidgets.QMessageBox.question(self, "Delete Confirmation", "Are you sure you want to delete this course?",
+        reply = QtWidgets.QMessageBox.question(self, "Delete Confirmation", "Are you sure you want to delete this course?\nThe students under this course will also be deleted.",
                                  QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
         if reply == QtWidgets.QMessageBox.Yes:
             self.courseObject.deleteCourse(course)

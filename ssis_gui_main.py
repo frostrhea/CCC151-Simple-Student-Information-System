@@ -87,7 +87,12 @@ class MainWindow(QtWidgets.QMainWindow):
     def add_course_button_clicked(self):
         course_name = self.gui_ssis.enterCourse.text()
         course_code = self.gui_ssis.enterCode.text()
-        self.courseObject.addCourse(course_name, course_code)
+        if self.courseObject.courseCodeExists(course_code) == True:
+                        QtWidgets.QMessageBox.warning(self, "Course Exists", "Course code already exists.")
+        elif not course_code or not course_name:
+            QtWidgets.QMessageBox.warning(self, "Lacking Input", "Please input all details.")
+        else:
+            self.courseObject.addCourse(course_code, course_name)
         
         self.setStandardItemModel()
         self.gui_ssis.CourseTable.model().layoutChanged.emit()
@@ -100,10 +105,16 @@ class MainWindow(QtWidgets.QMainWindow):
         student_name = self.gui_ssis.enterSName.text()
         student_id = self.gui_ssis.enterID.text()
         student_course = self.gui_ssis.chooseCourse.currentText()
+        if self.studentObject.studentIDExists(student_id) == True:
+                                QtWidgets.QMessageBox.warning(self, "Student ID Exists", "Student ID already exists.")
+        elif not student_name or not student_id:
+            QtWidgets.QMessageBox.warning(self, "Lacking Input", "Please input all details.")
+        else:
+            student_course_code = self.courseObject.getCourseCode(student_course) #to change course name in combo box to course code for table
+            self.studentObject.addStudent(student_id, student_name, student_course)
+            
 
-        student_course_code = self.courseObject.getCourseCode(student_course)
-
-        self.studentObject.addStudent(student_name, student_id, student_course_code)
+        self.studentObject.addStudent(student_name, student_id, student_course)
         self.setStandardItemModel()
         self.gui_ssis.StudentTable.model().layoutChanged.emit()
         self.gui_ssis.enterSName.clear()
@@ -243,10 +254,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-    ui = Ui_MainWindow()
-    window = MainWindow(ui)
-    #ui = window.uiReturner()
-    # ui.setupUi(window)
+    ui = Ui_MainWindow()  # structural gui
+    window = MainWindow(ui) # functional gui
     window.show()
     sys.exit(app.exec_())
 

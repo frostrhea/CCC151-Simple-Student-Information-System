@@ -6,5 +6,5 @@
   - ssis_gui_main for the GUI functionality and it may also serve as a bridge between the gui_ssis2 and Student_and_Course_class
 
 Used pandas library for data manipulation.
-Used Qt Designer to design GUI.
+Used Qt Designer to design GUI (PyQT5 version).
 

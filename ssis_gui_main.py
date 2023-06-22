@@ -105,16 +105,14 @@ class MainWindow(QtWidgets.QMainWindow):
         student_name = self.gui_ssis.enterSName.text()
         student_id = self.gui_ssis.enterID.text()
         student_course = self.gui_ssis.chooseCourse.currentText()
+        student_course_code = self.courseObject.getCourseCode(student_course) #to change course name in combo box to course code for table
         if self.studentObject.studentIDExists(student_id) == True:
-                                QtWidgets.QMessageBox.warning(self, "Student ID Exists", "Student ID already exists.")
+                               QtWidgets.QMessageBox.warning(self, "Student ID Exists", "Student ID already exists.")
         elif not student_name or not student_id:
             QtWidgets.QMessageBox.warning(self, "Lacking Input", "Please input all details.")
         else:
-            student_course_code = self.courseObject.getCourseCode(student_course) #to change course name in combo box to course code for table
-            self.studentObject.addStudent(student_id, student_name, student_course)
+            self.studentObject.addStudent(student_name, student_id,  student_course_code)
             
-
-        self.studentObject.addStudent(student_name, student_id, student_course)
         self.setStandardItemModel()
         self.gui_ssis.StudentTable.model().layoutChanged.emit()
         self.gui_ssis.enterSName.clear()

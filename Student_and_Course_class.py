@@ -14,7 +14,7 @@ class Course:
 
     # function to add a course to the list
     # Checks if input is in the list, then adds it to the list by appending it to csv
-    def addCourse(self, value, code):
+    def addCourse(self, code, value):
         if code in self.courses_df['courseCode'].values:
             print(f"Course code already exists.")
             return
@@ -124,6 +124,7 @@ class StudentInfo:
     # function to add a student
     def addStudent(self, name, id, course):
         if any(self.student_df['id'] == id):
+        #if id in self.student_df['id'].values:
             print(f"Student with ID '{id}' already exists.")
             return
         else:
